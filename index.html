@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta id="viewportMeta" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
-  <title>Lịch phân công công việc PXN - Version 3.1</title>
-  <link rel="icon" type="image/png" sizes="64x64" href="./APP_ICON_LICH_PHAN_CONG_64.png?v=3.1">
-  <link rel="shortcut icon" type="image/png" href="./APP_ICON_LICH_PHAN_CONG_64.png?v=3.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="./APP_ICON_LICH_PHAN_CONG_180.png?v=3.1">
-  <link rel="manifest" href="./manifest.json?v=3.1">
-  <meta name="msapplication-TileImage" content="./APP_ICON_LICH_PHAN_CONG_192.png?v=3.1">
+  <title>Lịch phân công công việc PXN - Version 4.1</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="./APP_ICON_LICH_PHAN_CONG_64.png?v=4.1">
+  <link rel="shortcut icon" type="image/png" href="./APP_ICON_LICH_PHAN_CONG_64.png?v=4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="./APP_ICON_LICH_PHAN_CONG_180.png?v=4.1">
+  <link rel="manifest" href="./manifest.json?v=4.1">
+  <meta name="msapplication-TileImage" content="./APP_ICON_LICH_PHAN_CONG_192.png?v=4.1">
   <meta name="theme-color" content="#580824">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -85,8 +85,8 @@
     .day-block{margin-top:9px;page-break-inside:avoid}
     .day-title{font-size:12.8px;font-weight:800;text-transform:uppercase;margin:0 0 3px;color:#000}
     .day-title small{font-weight:600;color:#333;text-transform:none}
-    table.schedule-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:10.4px;line-height:1.22}
-    .schedule-table th,.schedule-table td{border:1px solid #333;padding:2px 3px;vertical-align:middle;text-align:center;height:20px;word-break:break-word}
+    table.schedule-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:10.4px;line-height:1.35}
+    .schedule-table th,.schedule-table td{border:1px solid #333;padding:3px 3px;vertical-align:middle;text-align:center;height:22px;word-break:break-word}
     .schedule-table th{font-weight:800;background:#f5f5f5}
     .schedule-table th .req{display:block;font-size:9.5px;font-weight:700;color:#333;margin-top:1px}
     .schedule-table .stt{width:34px}
@@ -144,8 +144,8 @@
       .paper-note{font-size:12.5px;margin:10px 0 0}
       .day-block{margin-top:8px}
       .day-title{font-size:14.6px;margin-bottom:4px}
-      table.schedule-table{font-size:13px;line-height:1.25}
-      .schedule-table th,.schedule-table td{height:27px;padding:4px 5px}
+      table.schedule-table{font-size:13px;line-height:1.35}
+      .schedule-table th,.schedule-table td{height:30px;padding:5px 5px}
       .schedule-table th .req{font-size:11px}
     }
     @media(max-width:760px){
@@ -281,15 +281,15 @@
       .tabbar.has-admin{grid-template-columns:repeat(3, minmax(130px, 170px));}
       .tab-btn{font-size:13px;flex-direction:row;gap:7px;border-radius:10px}.tab-btn .ico{font-size:18px}
       .main{top:calc(var(--header-h) + var(--tabbar-h))!important;bottom:0!important;padding:8px 10px 14px!important;}
-      .paper{padding:18px 12px!important}.schedule-table{font-size:13px!important;line-height:1.23!important}.schedule-table th,.schedule-table td{height:27px!important;padding:4px 5px!important}.edit-table{font-size:12px!important}.edit-table input{font-size:12px!important;min-height:28px!important}.edit-table .stt{width:36px!important;min-width:36px!important;max-width:36px!important}
+      .paper{padding:18px 12px!important}.schedule-table{font-size:13px!important;line-height:1.35!important}.schedule-table th,.schedule-table td{height:30px!important;padding:5px 5px!important}.edit-table{font-size:12px!important}.edit-table input{font-size:12px!important;min-height:28px!important}.edit-table .stt{width:36px!important;min-width:36px!important;max-width:36px!important}
     }
     @media (max-width:760px){
       :root{--header-content-h:58px;--tabbar-content-h:54px}
       .brand-title{font-size:14px!important}.brand-sub{font-size:10.8px!important}.top-actions .btn{min-height:32px!important;height:32px!important;padding:0 9px!important;font-size:12.5px!important}.user-chip{display:none!important}
       .toolbar{padding:8px!important}.toolbar-left,.toolbar-right{width:100%!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}.toolbar-left .btn,.toolbar-right .btn,.toolbar input{width:100%!important;min-width:0!important}.toolbar input[type="search"]{width:100%!important;grid-column:span 2}.week-label{grid-column:span 2;text-align:center;font-size:13px!important}.btn{min-height:36px!important;padding:0 8px!important;font-size:12.5px!important}
       .paper{padding:10px 4px!important;border-radius:8px!important}.paper-head{margin-bottom:5px!important}.paper-title{font-size:15px!important}.paper-sub{font-size:11px!important}.paper-note{font-size:9px!important;line-height:1.25!important}.day-block{margin-top:5px!important}.day-title{font-size:9.5px!important;line-height:1.2!important;margin-bottom:2px!important}
-      .schedule-table{font-size:7.2px!important;line-height:1.08!important}.schedule-table th,.schedule-table td{height:15px!important;padding:1px!important;border-color:#444!important}.schedule-table .stt{width:18px!important;min-width:18px!important;max-width:18px!important}.search-hit{padding:0!important}
-      .card{padding:10px!important;border-radius:12px!important}.card-title{font-size:16px!important}.grid{gap:8px!important}.col-6,.col-4,.col-3{grid-column:span 12!important}.edit-table{font-size:7.2px!important;line-height:1.05!important}.edit-table th,.edit-table td{padding:1px!important}.edit-table input{font-size:7.2px!important;min-height:20px!important;padding:0!important;border-radius:3px!important}.edit-table .stt{width:18px!important;min-width:18px!important;max-width:18px!important}.tab-day{font-size:11px!important;min-height:30px!important;padding:4px 6px!important}.modal-card{width:calc(100vw - 16px)!important;max-width:calc(100vw - 16px)!important;}
+      .schedule-table{font-size:7.5px!important;line-height:1.18!important}.schedule-table th,.schedule-table td{height:17px!important;padding:2px 1px!important;border-color:#444!important}.schedule-table .stt{width:18px!important;min-width:18px!important;max-width:18px!important}.search-hit{padding:0!important}
+      .card{padding:10px!important;border-radius:12px!important}.card-title{font-size:16px!important}.grid{gap:8px!important}.col-6,.col-4,.col-3{grid-column:span 12!important}.edit-table{font-size:7.5px!important;line-height:1.18!important}.edit-table th,.edit-table td{padding:2px 1px!important}.edit-table input{font-size:7.5px!important;min-height:22px!important;padding:0!important;border-radius:3px!important}.edit-table .stt{width:18px!important;min-width:18px!important;max-width:18px!important}.tab-day{font-size:11px!important;min-height:30px!important;padding:4px 6px!important}.modal-card{width:calc(100vw - 16px)!important;max-width:calc(100vw - 16px)!important;}
     }
     @media (display-mode:standalone){html,body,.app{background:var(--header-solid)!important}.topbar{outline:1px solid var(--header-solid)}}
 
@@ -302,20 +302,20 @@
     .logout-icon-btn .icon2d{width:22px;height:22px}
     .paper{position:relative;touch-action:pan-x pan-y pinch-zoom!important}
     .paper-shell{touch-action:pan-x pan-y pinch-zoom!important}
-    .paper-print-icon{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;display:inline-grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--blue);box-shadow:0 2px 8px rgba(15,23,42,.12);z-index:3;padding:0}
-    .paper-print-icon:hover{background:#f8fbff}
+    .paper-print-icon{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;display:inline-grid;place-items:center;background:transparent;border:0;color:var(--blue);box-shadow:none;z-index:3;padding:0}
+    .paper-print-icon:hover{background:transparent;color:#1558b0}
     .paper-print-icon .icon2d{width:20px;height:20px}
     .day-title{color:var(--blue)!important}
     .toolbar-main,.toolbar-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     @media (max-width:760px){
       .toolbar{display:flex!important;flex-direction:column!important;gap:7px!important}
-      .toolbar-main{width:100%!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:6px!important;order:1}
-      .toolbar-main input[type="date"]{width:100%!important;min-width:0!important}
-      .toolbar-main .btn{width:auto!important;min-width:92px!important}
+      .toolbar-main{width:100%!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;order:1}
+      .toolbar-main input[type="date"],.toolbar-main .btn{width:100%!important;min-width:0!important;height:36px!important;min-height:36px!important;border-radius:8px!important;font-size:12.5px!important;line-height:20px!important;padding:0 8px!important}
+      .toolbar-main input[type="date"]{padding:6px 8px!important;background:#fff!important;border:1px solid var(--line)!important;color:var(--text)!important;font-weight:650!important}
       .toolbar-nav{width:100%!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;order:2}
       .toolbar-nav .btn{width:100%!important;min-width:0!important;padding:0 4px!important;white-space:nowrap!important}
       .toolbar-right{width:100%!important;display:grid!important;grid-template-columns:1fr!important;gap:6px!important;order:3}
-      .toolbar-right .week-label{grid-column:auto!important;text-align:center!important}
+      .toolbar-right .week-label{display:none!important}
       .toolbar-right input[type="search"]{width:100%!important;grid-column:auto!important}
     }
     @media print{.paper-print-icon{display:none!important}}
@@ -327,10 +327,10 @@
   <header class="topbar">
     <div class="brand">
       <div class="brand-title">Lịch phân công công việc PXN</div>
-      <div class="brand-sub">Tab 1: Lịch công việc · Tab 2: Đổi lịch · Quản lý đăng nhập để hiện Tab 3: Tạo lịch</div>
+      
     </div>
     <div class="top-actions">
-      <span id="versionChip" class="version-chip">Version 3.1</span>
+      <span id="versionChip" class="version-chip">Version 4.1</span>
       <span id="userChip" class="user-chip hidden"></span>
       <button id="btnLogin" class="btn primary" type="button">Đăng nhập</button>
       <button id="btnLogout" class="logout-icon-btn hidden" type="button" aria-label="Đăng xuất" title="Đăng xuất"><svg class="icon2d" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M21 19V5a2 2 0 0 0-2-2h-6"/></svg></button>
@@ -453,7 +453,7 @@
   Sau khi Deploy Apps Script Web App, dán URL /exec vào GAS_WEB_APP_URL.
 ========================================================= */
 const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyDoqz5PAjfLCzQvB8h_MeQHVa8t-0BYT9Syz_RVcGsYFTVFh2i7ZNt57Jo3mNKgkJW/exec';
-const INDEX_VERSION = 3;
+const INDEX_VERSION = 4;
 const CODE_VERSION = 1;
 const APP_VERSION = `${INDEX_VERSION}.${CODE_VERSION}`;
 
