@@ -2,8 +2,18 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta id="viewportMeta" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <title>Lịch phân công công việc PXN</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="./APP_ICON_LICH_PHAN_CONG_64.png?v=1.0">
+  <link rel="shortcut icon" type="image/png" href="./APP_ICON_LICH_PHAN_CONG_64.png?v=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="./APP_ICON_LICH_PHAN_CONG_180.png?v=1.0">
+  <link rel="manifest" href="./manifest.json?v=1.0">
+  <meta name="msapplication-TileImage" content="./APP_ICON_LICH_PHAN_CONG_192.png?v=1.0">
+  <meta name="theme-color" content="#580824">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Lịch PXN">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <style>
     :root{
       --wine:#7b113a;
@@ -158,6 +168,129 @@
       .paper-shell{padding:0;background:#fff;border:0;overflow:visible}
       .paper{box-shadow:none;width:100%;min-height:auto;margin:0;padding:10mm}
     }
+
+
+    /* ===== PATCH TAB APP SHELL + PWA-LIKE FIXED BACKGROUND + NO HORIZONTAL SWIPE ===== */
+    :root{
+      --header-content-h:58px;
+      --tabbar-content-h:56px;
+      --safe-top:env(safe-area-inset-top,0px);
+      --safe-bottom:env(safe-area-inset-bottom,0px);
+      --header-h:calc(var(--header-content-h) + var(--safe-top));
+      --tabbar-h:calc(var(--tabbar-content-h) + var(--safe-bottom));
+      --header-solid:#580824;
+    }
+    html,body{
+      width:100%!important;
+      height:100%!important;
+      min-height:100%!important;
+      overflow:hidden!important;
+      overscroll-behavior:none!important;
+      background:var(--header-solid)!important;
+    }
+    body{
+      position:fixed!important;
+      inset:0!important;
+      max-width:100vw!important;
+      max-height:100dvh!important;
+      touch-action:manipulation!important;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    @supports not (height:100dvh){body{max-height:100vh!important}}
+    .app{
+      position:fixed!important;
+      inset:0!important;
+      width:100vw!important;
+      height:100dvh!important;
+      max-width:100vw!important;
+      max-height:100dvh!important;
+      overflow:hidden!important;
+      display:flex!important;
+      flex-direction:column!important;
+      background:var(--bg)!important;
+      overscroll-behavior:none!important;
+      isolation:isolate!important;
+    }
+    @supports not (height:100dvh){.app{height:100vh!important;max-height:100vh!important}}
+    .topbar{
+      position:fixed!important;
+      left:0!important;right:0!important;top:0!important;
+      height:var(--header-h)!important;
+      min-height:var(--header-h)!important;
+      z-index:30!important;
+      background:var(--header-solid)!important;
+      border-bottom:1px solid var(--header-solid)!important;
+      box-shadow:none!important;
+      padding:calc(var(--safe-top) + 8px) 12px 8px 12px!important;
+      overflow:visible!important;
+      transform:translateZ(0);
+      backface-visibility:hidden;
+    }
+    .brand-title{font-size:16px!important;line-height:1.25!important}
+    .brand-sub{font-size:12px!important;line-height:1.25!important}
+    .top-actions{flex-wrap:nowrap!important;min-width:0!important}.top-actions .btn{min-height:34px!important;height:34px!important;padding:0 12px!important;white-space:nowrap!important}
+    .user-chip{max-width:34vw!important}
+    .tabbar{
+      position:fixed;left:0;right:0;bottom:0;z-index:28;
+      height:var(--tabbar-h);min-height:var(--tabbar-h);
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;
+      background:rgba(255,255,255,.98);border-top:1px solid var(--line);
+      box-shadow:0 -4px 18px rgba(74,7,31,.10);
+      padding:4px 6px var(--safe-bottom) 6px;
+      overflow:hidden;overscroll-behavior:none;
+    }
+    .tabbar.has-admin{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .tab-btn{
+      min-width:0;border-radius:12px;background:transparent;color:var(--muted);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+      font-size:12px;font-weight:700;line-height:1.15;padding:2px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+    .tab-btn .ico{font-size:20px;line-height:1}.tab-btn.active{background:#fff0f5;color:var(--wine);font-weight:800}.tab-btn.hidden{display:none!important}
+    .main{
+      position:fixed!important;
+      left:0!important;right:0!important;
+      top:var(--header-h)!important;
+      bottom:var(--tabbar-h)!important;
+      min-width:0!important;
+      overflow-y:auto!important;
+      overflow-x:hidden!important;
+      overscroll-behavior:contain!important;
+      -webkit-overflow-scrolling:touch!important;
+      background:var(--bg)!important;
+      padding:8px 8px 12px!important;
+    }
+    .main,.toolbar,.status-line,.layout,.paper-shell,.paper,.admin-panel,.swap-panel,.editor-wrap,.tabs{max-width:100%!important;overflow-x:hidden!important;}
+    .layout,.toolbar,.status-line,.admin-panel,.swap-panel{width:100%!important;margin-left:0!important;margin-right:0!important}
+    .toolbar{position:relative!important;z-index:1;margin-bottom:8px!important;border-radius:12px!important}
+    .toolbar-left,.toolbar-right{min-width:0!important}.toolbar input[type="date"]{width:150px!important}.toolbar input[type="search"]{width:min(240px,42vw)!important}
+    .paper-shell{padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;}
+    .paper{width:100%!important;min-width:0!important;max-width:none!important;min-height:auto!important;margin:0!important;padding:16px 10px!important;border-radius:8px!important;box-shadow:0 4px 18px rgba(15,23,42,.10)!important;}
+    .paper-title{font-size:clamp(17px,2vw,24px)!important}.paper-sub{font-size:clamp(12px,1.3vw,15.5px)!important}.paper-note{font-size:clamp(10px,1.05vw,12.5px)!important}
+    .day-title{font-size:clamp(10.5px,1.2vw,14.5px)!important;margin-bottom:3px!important}.day-block{margin-top:7px!important}
+    table.schedule-table,table.edit-table{width:100%!important;min-width:0!important;max-width:100%!important;table-layout:fixed!important;}
+    .schedule-table th,.schedule-table td{word-break:break-word!important;overflow-wrap:anywhere!important;white-space:normal!important;}
+    .schedule-table .stt,.edit-table .stt{width:28px!important;min-width:28px!important;max-width:28px!important}
+    .schedule-table .col-bp,.schedule-table .col-may,.schedule-table .col-thucong,.schedule-table .col-kyduyet,.schedule-table .col-tm,.schedule-table .col-tuy,.schedule-table .col-khac,.schedule-table .col-truc,.schedule-table .col-nghi{width:auto!important;min-width:0!important;max-width:none!important}
+    .editor-wrap{border-radius:10px!important}.edit-table th,.edit-table td{padding:3px 2px!important;word-break:break-word!important;overflow-wrap:anywhere!important}.edit-table input{min-width:0!important;width:100%!important;text-align:center!important;padding:2px!important;border-radius:4px!important}
+    .tabs{display:flex!important;flex-wrap:wrap!important;gap:6px!important;overflow:hidden!important}.tab-day{white-space:normal!important;min-height:34px!important;line-height:1.2!important;padding:5px 8px!important}
+    @media (min-width:900px){
+      .tabbar{top:var(--header-h);bottom:auto;height:var(--tabbar-h);min-height:var(--tabbar-h);border-top:0;border-bottom:1px solid var(--line);box-shadow:0 4px 16px rgba(74,7,31,.08);grid-template-columns:repeat(2, minmax(130px, 170px));justify-content:flex-start;padding:4px 10px;}
+      .tabbar.has-admin{grid-template-columns:repeat(3, minmax(130px, 170px));}
+      .tab-btn{font-size:13px;flex-direction:row;gap:7px;border-radius:10px}.tab-btn .ico{font-size:18px}
+      .main{top:calc(var(--header-h) + var(--tabbar-h))!important;bottom:0!important;padding:8px 10px 14px!important;}
+      .paper{padding:18px 12px!important}.schedule-table{font-size:13px!important;line-height:1.23!important}.schedule-table th,.schedule-table td{height:27px!important;padding:4px 5px!important}.edit-table{font-size:12px!important}.edit-table input{font-size:12px!important;min-height:28px!important}.edit-table .stt{width:36px!important;min-width:36px!important;max-width:36px!important}
+    }
+    @media (max-width:760px){
+      :root{--header-content-h:58px;--tabbar-content-h:54px}
+      .brand-title{font-size:14px!important}.brand-sub{font-size:10.8px!important}.top-actions .btn{min-height:32px!important;height:32px!important;padding:0 9px!important;font-size:12.5px!important}.user-chip{display:none!important}
+      .toolbar{padding:8px!important}.toolbar-left,.toolbar-right{width:100%!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}.toolbar-left .btn,.toolbar-right .btn,.toolbar input{width:100%!important;min-width:0!important}.toolbar input[type="search"]{width:100%!important;grid-column:span 2}.week-label{grid-column:span 2;text-align:center;font-size:13px!important}.btn{min-height:36px!important;padding:0 8px!important;font-size:12.5px!important}
+      .paper{padding:10px 4px!important;border-radius:8px!important}.paper-head{margin-bottom:5px!important}.paper-title{font-size:15px!important}.paper-sub{font-size:11px!important}.paper-note{font-size:9px!important;line-height:1.25!important}.day-block{margin-top:5px!important}.day-title{font-size:9.5px!important;line-height:1.2!important;margin-bottom:2px!important}
+      .schedule-table{font-size:7.2px!important;line-height:1.08!important}.schedule-table th,.schedule-table td{height:15px!important;padding:1px!important;border-color:#444!important}.schedule-table .stt{width:18px!important;min-width:18px!important;max-width:18px!important}.search-hit{padding:0!important}
+      .card{padding:10px!important;border-radius:12px!important}.card-title{font-size:16px!important}.grid{gap:8px!important}.col-6,.col-4,.col-3{grid-column:span 12!important}.edit-table{font-size:7.2px!important;line-height:1.05!important}.edit-table th,.edit-table td{padding:1px!important}.edit-table input{font-size:7.2px!important;min-height:20px!important;padding:0!important;border-radius:3px!important}.edit-table .stt{width:18px!important;min-width:18px!important;max-width:18px!important}.tab-day{font-size:11px!important;min-height:30px!important;padding:4px 6px!important}.modal-card{width:calc(100vw - 16px)!important;max-width:calc(100vw - 16px)!important;}
+    }
+    @media (display-mode:standalone){html,body,.app{background:var(--header-solid)!important}.topbar{outline:1px solid var(--header-solid)}}
+
   </style>
 </head>
 <body>
@@ -169,12 +302,16 @@
     </div>
     <div class="top-actions">
       <span id="userChip" class="user-chip hidden"></span>
-      <button id="btnOpenAdmin" class="btn secondary hidden" type="button">Quản lý lịch</button>
-      <button id="btnOpenSwap" class="btn secondary hidden" type="button">Đổi lịch</button>
       <button id="btnLogin" class="btn primary" type="button">Đăng nhập</button>
       <button id="btnLogout" class="btn secondary hidden" type="button">Đăng xuất</button>
     </div>
   </header>
+
+  <nav id="tabbar" class="tabbar" aria-label="Điều hướng chính">
+    <button class="tab-btn active" data-tab="schedule" type="button"><span class="ico">📅</span><span>Lịch công việc</span></button>
+    <button class="tab-btn" data-tab="swap" type="button"><span class="ico">🔁</span><span>Đổi lịch</span></button>
+    <button id="tabAdminBtn" class="tab-btn hidden" data-tab="admin" type="button"><span class="ico">✍️</span><span>Tạo lịch</span></button>
+  </nav>
 
   <main class="main">
     <section class="toolbar">
@@ -194,7 +331,7 @@
 
     <div id="statusLine" class="status-line"></div>
 
-    <section id="swapPanel" class="swap-panel card hidden">
+    <section id="swapPanel" class="swap-panel card hidden" data-tab-content="swap">
       <h2 class="card-title">Đề xuất đổi lịch</h2>
       <div id="swapMessage"></div>
       <div class="grid">
@@ -229,7 +366,7 @@
       <div id="requestList" class="request-list"></div>
     </section>
 
-    <section id="adminPanel" class="admin-panel card hidden">
+    <section id="adminPanel" class="admin-panel card hidden" data-tab-content="admin">
       <h2 class="card-title">Quản lý lịch tuần</h2>
       <div id="adminMessage"></div>
       <div class="btn-row" style="justify-content:flex-start;margin-top:0">
@@ -245,7 +382,7 @@
       <div id="editorBox"></div>
     </section>
 
-    <section class="layout">
+    <section class="layout" data-tab-content="schedule">
       <div class="paper-shell">
         <article id="paper" class="paper"></article>
       </div>
@@ -309,7 +446,8 @@ const state = {
   weekStart: mondayOf(new Date()),
   weekData: null,
   editData: null,
-  activeEditDay: 0
+  activeEditDay: 0,
+  activeTab: 'schedule'
 };
 
 const $ = id => document.getElementById(id);
@@ -338,8 +476,9 @@ function bindEvents(){
   $('loginPass').addEventListener('keydown', e => { if(e.key === 'Enter') login(); });
   $('btnLogout').onclick = logout;
 
-  $('btnOpenAdmin').onclick = () => togglePanel('adminPanel');
-  $('btnOpenSwap').onclick = () => { togglePanel('swapPanel'); prepareSwapPanel(); loadMyRequests(); };
+  document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
+    btn.addEventListener('click', () => showTab(btn.dataset.tab));
+  });
 
   $('btnLoadAdminWeek').onclick = loadAdminWeek;
   $('btnCopyPrevWeek').onclick = copyPrevWeek;
@@ -409,8 +548,7 @@ async function logout(){
   state.user = null;
   state.personnel = [];
   localStorage.removeItem(TOKEN_KEY);
-  $('adminPanel').classList.add('hidden');
-  $('swapPanel').classList.add('hidden');
+  showTab('schedule');
   renderAuth();
 }
 
@@ -425,11 +563,12 @@ function renderAuth(){
   const logged = !!state.user;
   $('btnLogin').classList.toggle('hidden', logged);
   $('btnLogout').classList.toggle('hidden', !logged);
-  $('btnOpenSwap').classList.toggle('hidden', !logged);
   $('userChip').classList.toggle('hidden', !logged);
   $('userChip').textContent = logged ? `${state.user.tenNhanVien} (${state.user.maNhanVien})` : '';
   const canManage = logged && state.user.canManageSchedule;
-  $('btnOpenAdmin').classList.toggle('hidden', !canManage);
+  $('tabAdminBtn').classList.toggle('hidden', !canManage);
+  $('tabbar').classList.toggle('has-admin', !!canManage);
+  if(!canManage && state.activeTab === 'admin') showTab('schedule');
 }
 
 async function loadPublicWeek(){
@@ -848,7 +987,32 @@ function syncWeekInput(){
 
 function openLogin(){ $('loginModal').classList.remove('hidden'); setTimeout(() => $('loginUser').focus(), 50); }
 function closeLogin(){ $('loginModal').classList.add('hidden'); clearMsg('loginMessage'); }
-function togglePanel(id){ $(id).classList.toggle('hidden'); }
+function showTab(tab){
+  if(tab === 'swap' && !state.user){
+    openLogin();
+    setMsg('loginMessage', 'Vui lòng đăng nhập để tạo hoặc xác nhận đề xuất đổi lịch.', 'warn');
+    return;
+  }
+  if(tab === 'admin' && !(state.user && state.user.canManageSchedule)){
+    if(!state.user){
+      openLogin();
+      setMsg('loginMessage', 'Vui lòng đăng nhập bằng tài khoản quản lý để tạo lịch.', 'warn');
+    }
+    return;
+  }
+  state.activeTab = tab;
+  document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tab));
+  document.querySelectorAll('[data-tab-content]').forEach(el => el.classList.add('hidden'));
+  const target = document.querySelector(`[data-tab-content="${tab}"]`);
+  if(target) target.classList.remove('hidden');
+  if(tab === 'swap'){
+    prepareSwapPanel();
+    loadMyRequests();
+  }
+  if(tab === 'admin' && !state.editData){
+    loadAdminWeek();
+  }
+}
 function ensureLogged(){ if(!state.user) throw new Error('Vui lòng đăng nhập.'); }
 
 function setMsg(id, msg, type){
