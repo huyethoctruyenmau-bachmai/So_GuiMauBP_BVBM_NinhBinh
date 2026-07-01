@@ -493,6 +493,11 @@ function renderPaper(){
     </div>`;
 }
 
+
+function cleanDayTitleText(value){
+  return String(value || '').replace(/\s*\((?:Trực đêm|Trực cả ngày|Trực ngày|Trực)\)\s*/gi, '').trim();
+}
+
 function renderDayBlock(day, q){
   const maxRows = getMaxRows(day);
   const rows = [];
@@ -507,7 +512,7 @@ function renderDayBlock(day, q){
   }
   return `
     <section class="day-block">
-      <h3 class="day-title">${esc(day.thu)} - ngày ${esc(day.dateText)}</h3>
+      <h3 class="day-title">${esc(cleanDayTitleText(day.thu))} - ngày ${esc(cleanDayTitleText(day.dateText))}</h3>
       <table class="schedule-table">
         <thead>
           <tr>
@@ -521,9 +526,7 @@ function renderDayBlock(day, q){
 }
 
 function renderHeader(pos, day){
-  let req = pos.required ? String(pos.required) : '';
-  if(pos.key === 'Trực') req = (day.kieuTruc || 'Trực') + ' / 3';
-  return `<th class="${pos.cls}">${esc(pos.label)}${req ? `<span class="req">${esc(req)}</span>` : ''}</th>`;
+  return `<th class="${pos.cls}">${esc(pos.label)}</th>`;
 }
 
 function renderName(name, lunch, q){
@@ -609,7 +612,7 @@ function renderEditor(){
     <div class="editor-wrap">
       <table class="edit-table">
         <thead>
-          <tr><th class="stt">STT</th>${POSITIONS.map(pos => `<th>${esc(pos.label)}${pos.required ? '<br><small>'+pos.required+'</small>' : ''}</th>`).join('')}</tr>
+          <tr><th class="stt">STT</th>${POSITIONS.map(pos => `<th>${esc(pos.label)}</th>`).join('')}</tr>
         </thead>
         <tbody>${rows.join('')}</tbody>
       </table>
